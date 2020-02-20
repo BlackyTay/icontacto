@@ -23,4 +23,8 @@ export class HomePage {
     });
   }
 
+  onKeyUp(e) {
+    this.search(e.target.value);
+  }
+
 }
