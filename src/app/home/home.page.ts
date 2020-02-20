@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Contacts } from '@ionic-native/contacts/ngx';
-import { ContactFieldType, IContactFindOptions } from '@ionic-native/contacts';
+import { Contacts, ContactFieldType, IContactFindOptions  } from '@ionic-native/contacts/ngx';
+// import { ContactFieldType, IContactFindOptions } from '@ionic-native/contacts';
 
 @Component({
   selector: 'app-home',

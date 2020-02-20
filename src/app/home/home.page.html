@@ -9,7 +9,7 @@
         <ion-item *ngFor="let contact of contactsFound">
             <h2>{{contact.displayName}}</h2>
             <p *ngFor="let num of contact?.phoneNumbers">
-                {{num}}
+                {{num.value}}
             </p>
         </ion-item>
     </ion-list>
