@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Contacts } from '@ionic-native/contacts'
+import { Contacts, ContactFieldType, IContactFindOptions } from '@ionic-native/contacts'
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,20 @@ import { Contacts } from '@ionic-native/contacts'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  contFType: ContactFieldType[] = ['displayName', 'phoneNumbers'];
+  contactsFound = [];
 
-  constructor(private contacts: Contacts) {}
+  constructor(private contacts: Contacts) {
+    this.search('');
+  }
+
+  search(query) {
+    const option: IContactFindOptions = {
+      filter: query
+    }
+    this.contacts.find(this.contFType, option).then(conts => {
+      this.contactsFound = conts;
+    });
+  }
 
 }
