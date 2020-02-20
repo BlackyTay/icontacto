@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Contacts, ContactFieldType, IContactFindOptions } from '@ionic-native/contacts'
+import { Contacts, ContactFieldType, IContactFindOptions } from '@ionic-native/contacts';
 
 @Component({
   selector: 'app-home',
