@@ -1,0 +1,7 @@
+{
+  "name": "icontacto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
