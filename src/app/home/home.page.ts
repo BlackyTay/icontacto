@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Contacts, ContactFieldType, IContactFindOptions  } from '@ionic-native/contacts/ngx';
 // import { ContactFieldType, IContactFindOptions } from '@ionic-native/contacts';
 
@@ -8,10 +9,11 @@ import { Contacts, ContactFieldType, IContactFindOptions  } from '@ionic-native/
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  contFType: ContactFieldType[] = ['displayName'];
+  contFType: ContactFieldType[] = ['displayName', 'phoneNumbers', 'photos'];
   contactsFound = [];
+  contactDisplay: ContactDisplay;
 
-  constructor(private contacts: Contacts) {
+  constructor(private contacts: Contacts, private sanitizer: DomSanitizer) {
     this.search('');
   }
 
@@ -21,7 +23,20 @@ export class HomePage {
     };
 
     this.contacts.find(this.contFType, option).then(contacs => {
-      this.contactsFound = contacs;
+      contacs.forEach(contac => {
+      // this.contactDisplay.name = contac.displayName;
+      // contac.phoneNumbers.forEach(phone => {
+      //   this.contactDisplay.num.push(phone.value);
+      // });
+      // if (contac.photos != null) {
+      //   this.contactDisplay.image = this.sanitizer.bypassSecurityTrustUrl(contac.photos[0].value);
+      // }
+
+      this.contactsFound.push(contac);
+      // this.contactDisplay.name = null;
+      // this.contactDisplay.num = null;
+      // this.contactDisplay.image = null;
+      });
     });
   }
 
@@ -29,4 +44,10 @@ export class HomePage {
     this.search(e.target.value);
   }
 
+}
+
+interface ContactDisplay {
+  name: string;
+  num: string[];
+  image?: any;
 }
